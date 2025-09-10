@@ -9,6 +9,7 @@ import { QuoteResultPayload, PortfolioItem } from './types'
 import { InlineWidget } from 'react-calendly'
 import { generateQuotePdf } from './lib/pdf'
 import { PortfolioSlider } from './components/PortfolioSlider'
+import AiAppPreview from './components/AiAppPreview'
 
 
 export default function App() {
@@ -127,6 +128,14 @@ export default function App() {
                     <li className="text-sm text-gray-300">Panel de obra con hitos y certificados — 40h</li>
                   </ul>
                 </div>
+              </CardContent>
+            </Card>
+            <Card className="border-dashed">
+              <CardHeader>
+                <CardTitle>Cómo se vería la app (mock visual)</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <AiAppPreview />
               </CardContent>
             </Card>
           </div>
