@@ -17,3 +17,18 @@ body {
   color: #FBEFD3;
 }
 
+/* Oculta barra de scroll en contenedores horizontales */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Portfolio slider layout */
+.portfolio-slider { scroll-behavior: smooth; }
+.portfolio-track { display: flex; gap: 1.5rem; padding-right: 1.5rem; }
+.portfolio-slide { scroll-snap-align: start; min-width: 85vw; }
+@media (min-width: 640px) { /* sm */
+  .portfolio-slide { min-width: calc(50vw - 3rem); }
+}
+@media (min-width: 1024px) { /* lg: 3 cards visibles aprox */
+  .portfolio-slide { min-width: calc((100vw - 6rem - 6rem) / 3); max-width: 360px; }
+}
+

@@ -1,16 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { PortfolioCard } from './components/PortfolioCard'
 import { Maquetador } from './components/Maquetador'
 import { QuoteResult } from './components/QuoteResult'
 import { Button } from './components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from './components/ui/card'
 import { generateQuote } from './api/quote'
 import { supabase } from './lib/supabase'
-import { QuoteResultPayload } from './types'
+import { QuoteResultPayload, PortfolioItem } from './types'
 import { InlineWidget } from 'react-calendly'
 import { generateQuotePdf } from './lib/pdf'
+import { PortfolioSlider } from './components/PortfolioSlider'
 
-type PortfolioItem = { id: string; name: string; description: string; image_url?: string; business_outcome?: string }
 
 export default function App() {
   const [portfolio, setPortfolio] = useState<PortfolioItem[]>([])
@@ -23,15 +22,19 @@ export default function App() {
   const maquetadorRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
+    
     ;(async () => {
-      const { data, error } = await supabase.from('portfolio').select('*').order('name', { ascending: true })
-      if (error) {
+      //const { data, error } = await supabase.from('portfolio').select('*').order('name', { ascending: true })
+      if (true) {
         setPortfolio([
-          { id: '1', name: 'MedPlus', description: 'Health-tech app, redujo tiempos de gestión 30%', image_url: '', business_outcome: '30% menos tiempo' },
-          { id: '2', name: 'Betless', description: 'Plataforma de apuestas, aumentó conversiones', image_url: '', business_outcome: '↑ conversiones' }
+          { id: '1', name: 'MedPlus', description: 'Health-tech app, redujo tiempos de gestión 30%', image_url: 'https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png', business_outcome: '30% menos tiempo' },
+          { id: '2', name: 'Betless', description: 'Plataforma de apuestas, aumentó conversiones', image_url: 'https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png', business_outcome: '↑ conversiones' },
+          { id: '3', name: 'StoreFlow', description: 'Ecommerce B2B con catálogos personalizados y checkout en 1 clic', image_url: 'https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png', business_outcome: '↑ ticket medio 18%' },
+          { id: '4', name: 'EduTrack', description: 'Plataforma edtech con analíticas de aprendizaje y gamificación', image_url: 'https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png', business_outcome: '↑ retención 22%' }
+
         ])
       } else {
-        setPortfolio(data as PortfolioItem[])
+        setPortfolio([] as PortfolioItem[])
       }
     })()
   }, [])
@@ -104,11 +107,7 @@ export default function App() {
             <h2 className="text-2xl font-semibold">Portafolio</h2>
             <Button variant="outline" onClick={scrollToMaquetador}>Obtener cotización</Button>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {portfolio.map(p => (
-              <PortfolioCard key={p.id} name={p.name} description={p.description} image_url={p.image_url} business_outcome={p.business_outcome}/>
-            ))}
-          </div>
+          <PortfolioSlider items={portfolio} />
         </div>
       </section>
 

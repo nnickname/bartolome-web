@@ -32,3 +32,11 @@ export interface QuoteResultPayload {
   leadId?: string
 }
 
+export interface PortfolioItem {
+  id: string
+  name: string
+  description: string
+  image_url?: string
+  business_outcome?: string
+}
+
