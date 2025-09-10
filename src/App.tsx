@@ -84,11 +84,21 @@ export default function App() {
       <section className="px-6 md:px-10 py-12 bg-background">
         <div className="max-w-6xl mx-auto space-y-6">
           <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 animate-gradient-x">Simulador de cotización para innovación</h1>
-          <p className="text-foreground/70">
-            En minutos te damos una idea de tiempos y costo para una herramienta con IA que te ahorre tiempo o te ayude a vender más. Es un simulador: luego lo revisamos juntos y lo llevamos a tu realidad PyME. Precio desde <span className="font-semibold text-foreground">USD 499</span>.
-          </p>
-          <div>
-            <Button onClick={scrollToMaquetador}>Probar el simulador</Button>
+          
+          <div className="relative my-12">
+            <div className="h-px w-full mt-12 mb-4 bg-border" />
+            <button
+              onClick={scrollToMaquetador}
+              aria-label="Cotizar al instante"
+              className="group absolute inset-x-0 -top-6 mx-auto h-12 w-12 rounded-full bg-foreground text-background grid place-items-center shadow-md hover:opacity-90 focus:outline-none animate-bounce"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6 transition-transform group-hover:translate-y-0.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div className="pt-8 text-center">
+              <button onClick={scrollToMaquetador} className="text-sm font-medium text-foreground hover:underline">Cotizar al instante</button>
+            </div>
           </div>
           <div className="grid md:grid-cols-2 gap-10 items-start">
             <Card className="border-dashed">
