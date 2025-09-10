@@ -7,8 +7,8 @@ export async function generateQuotePdf(payload: QuoteResultPayload, prompt: stri
   const { width } = page.getSize()
 
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica)
-  const title = 'PymeTech IA - Propuesta'
-  const sub = 'Cotización y Alcance'
+  const title = 'PymeTech IA - Solución para tu PyME'
+  const sub = 'Simulación de cotización y alcance'
   const margin = 40
   let y = 790
 
@@ -21,7 +21,7 @@ export async function generateQuotePdf(payload: QuoteResultPayload, prompt: stri
   drawText(sub, 14)
 
   drawText(`Email: ${email || 'No proporcionado'}`)
-  drawText(`Prompt del proyecto: ${prompt}`)
+  drawText(`Necesidad/Herramienta: ${prompt}`)
   y -= 8
 
   drawText(`Complejidad: ${payload.parsed.complexity}`)

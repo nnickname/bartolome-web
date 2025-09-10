@@ -84,7 +84,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start">
           <Card className="order-2 md:order-1">
             <CardHeader>
-              <CardTitle>Cuéntanos tu proyecto</CardTitle>
+              <CardTitle>Contanos tu necesidad</CardTitle>
             </CardHeader>
             <CardContent>
               <Maquetador onSubmit={onSubmit} loading={loading} />
@@ -92,9 +92,9 @@ export default function App() {
             </CardContent>
           </Card>
           <div className="order-1 md:order-2 space-y-4">
-            <h1 className="text-3xl md:text-4xl font-semibold text-foreground">Simulador de cotización para innovación con IA</h1>
+            <h1 className="text-3xl md:text-4xl font-semibold text-foreground">Simulador de cotización para innovación</h1>
             <p className="text-foreground/70">
-              Obtén al instante una estimación orientativa para construir productos inteligentes: desde asistentes de negocio, automatizaciones y análisis predictivo hasta integraciones con tu stack. Es un simulador: la cifra puede ajustarse tras una validación rápida. Precio desde <span className="font-semibold text-foreground">USD 499</span>.
+              En minutos te damos una idea de tiempos y costo para una herramienta con IA que te ahorre tiempo o te ayude a vender más. Es un simulador: luego lo revisamos juntos y lo llevamos a tu realidad PyME. Precio desde <span className="font-semibold text-foreground">USD 499</span>.
             </p>
             <Card className="border-dashed">
               <CardHeader>
@@ -112,7 +112,7 @@ export default function App() {
                   </div>
                   <div className="rounded-lg border border-border p-3 bg-card">
                     <div className="text-xs text-gray-400">Horas</div>
-                    <div className="text-base font-semibold">240h</div>
+                    <div className="text-base font-semibold">32h</div>
                   </div>
                   <div className="rounded-lg border border-border p-3 bg-card">
                     <div className="text-xs text-gray-400">Costo (desde)</div>
@@ -120,11 +120,11 @@ export default function App() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2">Alcance (ejemplo)</h4>
+                  <h4 className="font-semibold mb-2">Alcance (ejemplo constructora)</h4>
                   <ul className="list-disc pl-5 space-y-1">
-                    <li className="text-sm text-gray-300">Asistente de ventas con IA para calificar leads — 20h</li>
-                    <li className="text-sm text-gray-300">Automatización de backoffice con agentes IA — 30h</li>
-                    <li className="text-sm text-gray-300">Panel con analítica predictiva y alertas — 40h</li>
+                    <li className="text-sm text-gray-300">Carga de partes diarios con fotos (web/móvil) — 20h</li>
+                    <li className="text-sm text-gray-300">Comparación avance vs. plan y alertas de desvío — 30h</li>
+                    <li className="text-sm text-gray-300">Panel de obra con hitos y certificados — 40h</li>
                   </ul>
                 </div>
               </CardContent>
