@@ -81,22 +81,24 @@ export default function App() {
           </nav>
         </div>
       </header>
-      <section ref={maquetadorRef} className="px-6 md:px-10 py-12 bg-background">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start">
-          <Card className="order-2 md:order-1">
-            <CardHeader>
-              <CardTitle>Contanos tu necesidad</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Maquetador onSubmit={onSubmit} loading={loading} />
-              {error && <p className="text-sm text-red-600 mt-3">{error}</p>}
-            </CardContent>
-          </Card>
-          <div className="order-1 md:order-2 space-y-4">
-            <h1 className="text-3xl md:text-4xl font-semibold text-foreground">Simulador de cotización para innovación</h1>
-            <p className="text-foreground/70">
-              En minutos te damos una idea de tiempos y costo para una herramienta con IA que te ahorre tiempo o te ayude a vender más. Es un simulador: luego lo revisamos juntos y lo llevamos a tu realidad PyME. Precio desde <span className="font-semibold text-foreground">USD 499</span>.
-            </p>
+      <section className="px-6 md:px-10 py-12 bg-background">
+        <div className="max-w-6xl mx-auto space-y-6">
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 animate-gradient-x">Simulador de cotización para innovación</h1>
+          <p className="text-foreground/70">
+            En minutos te damos una idea de tiempos y costo para una herramienta con IA que te ahorre tiempo o te ayude a vender más. Es un simulador: luego lo revisamos juntos y lo llevamos a tu realidad PyME. Precio desde <span className="font-semibold text-foreground">USD 499</span>.
+          </p>
+          <div>
+            <Button onClick={scrollToMaquetador}>Probar el simulador</Button>
+          </div>
+          <div className="grid md:grid-cols-2 gap-10 items-start">
+            <Card className="border-dashed">
+              <CardHeader>
+                <CardTitle>Cómo se vería la app (mock visual)</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <AiAppPreview />
+              </CardContent>
+            </Card>
             <Card className="border-dashed">
               <CardHeader>
                 <CardTitle>Vista previa de la cotización</CardTitle>
@@ -130,15 +132,21 @@ export default function App() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="border-dashed">
-              <CardHeader>
-                <CardTitle>Cómo se vería la app (mock visual)</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <AiAppPreview />
-              </CardContent>
-            </Card>
           </div>
+        </div>
+      </section>
+
+      <section ref={maquetadorRef} id="simulador" className="px-6 md:px-10 py-12 bg-background border-t border-border">
+        <div className="max-w-3xl mx-auto">
+          <Card>
+            <CardHeader>
+              <CardTitle>Contanos tu necesidad</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Maquetador onSubmit={onSubmit} loading={loading} />
+              {error && <p className="text-sm text-red-600 mt-3">{error}</p>}
+            </CardContent>
+          </Card>
         </div>
       </section>
 
