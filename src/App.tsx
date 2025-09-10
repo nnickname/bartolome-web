@@ -73,17 +73,17 @@ export default function App() {
   return (
     <div>
       <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-background/70 bg-background/90 border-b border-border">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 md:px-10 h-14">
-          <span className="font-semibold text-foreground">PymeTech</span>
+        <div className="max-w-8xl mx-auto flex items-center justify-between px-6 md:px-10 h-14">
+          <span className="font-semibold text-foreground">Bartolomé</span>
           <nav className="hidden md:flex gap-6 text-sm text-foreground/70">
-            <button onClick={scrollToMaquetador} className="hover:text-foreground">Formulario</button>
+            <button onClick={scrollToMaquetador} className="hover:text-foreground">Cotizar al instante</button>
             <a href="#portafolio" className="hover:text-foreground">Portafolio</a>
           </nav>
         </div>
       </header>
       <section className="px-6 md:px-10 py-12 bg-background">
         <div className="max-w-6xl mx-auto space-y-6">
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 animate-gradient-x">Simulador de cotización para innovación</h1>
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-#8E1616-500 to-red-500 animate-gradient-x">Simulador de cotización para innovación</h1>
           
           <div className="relative my-12">
             <div className="h-px w-full mt-12 mb-4 bg-border" />

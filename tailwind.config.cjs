@@ -5,15 +5,15 @@ module.exports = {
     extend: {
       colors: {
         // Paleta suave: gris cálido + lavanda, acento violeta
-        background: "#F0F3FF", // crema muy claro para fondos
+        background: "#EEEEEE", // crema muy claro para fondos
         foreground: "#171717", // texto principal oscuro
         card: "#FFFFFF", // tarjetas blancas
-        muted: "#F2EFFE", // lavanda muy suave para secciones
+        muted: "#F8EDED", // lavanda muy suave para secciones
         primary: {
-          DEFAULT: "#7C3AED", // violeta moderado (acento)
+          DEFAULT: "#8E1616", // violeta moderado (acento)
           foreground: "#FFFFFF"
         },
-        border: "#E7E2D3" // borde suave
+        border: "#FFDEDE" // borde suave
       },
       borderRadius: {
         md: "10px",
