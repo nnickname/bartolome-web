@@ -67,6 +67,15 @@ export default function App() {
 
   return (
     <div>
+      <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-background/70 bg-background/90 border-b border-border">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 md:px-10 h-14">
+          <span className="font-semibold text-foreground">PymeTech</span>
+          <nav className="hidden md:flex gap-6 text-sm text-foreground/70">
+            <button onClick={scrollToMaquetador} className="hover:text-foreground">Formulario</button>
+            <a href="#portafolio" className="hover:text-foreground">Portafolio</a>
+          </nav>
+        </div>
+      </header>
       <section ref={maquetadorRef} className="px-6 md:px-10 py-12 bg-background">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start">
           <Card className="order-2 md:order-1">
@@ -88,7 +97,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="px-6 md:px-10 py-12 bg-muted">
+      <section id="portafolio" className="px-6 md:px-10 py-12 bg-muted">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-semibold">Portafolio</h2>
