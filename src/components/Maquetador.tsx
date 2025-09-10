@@ -20,6 +20,7 @@ export function Maquetador({ onSubmit, loading }: Props) {
 
   const [step, setStep] = useState(0)
   const totalSteps = 3
+  const stepsLabels = ['Proyecto', 'Objetivo y público', 'Preferencias']
 
   const canGoNext = useMemo(() => {
     if (step === 0) return prompt.trim().length > 0
@@ -51,12 +52,40 @@ export function Maquetador({ onSubmit, loading }: Props) {
 
   return (
     <div className="space-y-5">
-      <div>
-        <div className="flex items-center justify-between mb-2">
+      <div className="space-y-3">
+        <div className="flex items-center justify-between">
           <span className="text-xs text-foreground/70">Paso {step + 1} de {totalSteps}</span>
-          <span className="text-xs text-foreground/60">{step === 0 ? 'Proyecto' : step === 1 ? 'Objetivo y público' : 'Preferencias'}</span>
+          <span className="text-xs text-foreground/60">{stepsLabels[step]}</span>
         </div>
-        <div className="h-2 w-full bg-muted rounded-md overflow-hidden">
+        <ol className="flex items-center gap-3">
+          {stepsLabels.map((label, i) => {
+            const isCompleted = i < step
+            const isCurrent = i === step
+            return (
+              <li key={label} className="flex items-center gap-3 flex-1">
+                <div className="flex items-center gap-2">
+                  <div
+                    aria-current={isCurrent ? 'step' : undefined}
+                    className={
+                      isCompleted
+                        ? 'h-7 w-7 rounded-full bg-primary text-primary-foreground text-xs grid place-items-center'
+                        : isCurrent
+                        ? 'h-7 w-7 rounded-full ring-2 ring-primary/60 bg-card text-foreground text-xs grid place-items-center'
+                        : 'h-7 w-7 rounded-full bg-muted text-foreground/60 text-xs grid place-items-center'
+                    }
+                  >
+                    {i + 1}
+                  </div>
+                  <span className={isCurrent ? 'text-xs text-foreground' : 'text-xs text-foreground/70'}>{label}</span>
+                </div>
+                {i < stepsLabels.length - 1 && (
+                  <div className="h-px flex-1 bg-border" />
+                )}
+              </li>
+            )
+          })}
+        </ol>
+        <div className="h-1 w-full bg-muted rounded-md overflow-hidden">
           <div className="h-full bg-primary transition-all" style={{ width: `${progressPct}%` }} />
         </div>
       </div>

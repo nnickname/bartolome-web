@@ -19,6 +19,7 @@ export default function App() {
   const [result, setResult] = useState<QuoteResultPayload | null>(null)
 
   const calendlyUrl = import.meta.env.VITE_CALENDLY_URL as string
+  const contactEmail = (import.meta.env.VITE_CONTACT_EMAIL as string) || 'hola@pymetech.com'
   const maquetadorRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -111,6 +112,47 @@ export default function App() {
         </div>
       </section>
 
+      <section id="contacto" className="px-6 md:px-10 py-16 border-t border-border relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-muted to-transparent" />
+        <div className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+          <div className="space-y-4 order-2 md:order-1">
+            <h2 className="text-2xl md:text-3xl font-semibold">¿Listo para hablar?</h2>
+            <p className="text-foreground/70">Escríbenos o agenda una llamada para revisar tu proyecto y priorizar el siguiente paso.</p>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={`mailto:${contactEmail}?subject=Consulta%20PymeTech&body=Hola%20PymeTech,%20tengo%20una%20consulta%20sobre%20un%20proyecto.`}
+                className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors h-11 px-5 border border-border bg-card hover:bg-muted"
+              >
+                Escríbenos
+              </a>
+              <a
+                href={calendlyUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors h-11 px-5 bg-primary text-primary-foreground hover:opacity-90"
+              >
+                Agendar llamada
+              </a>
+            </div>
+          </div>
+          <Card className="order-1 md:order-2">
+            <CardHeader>
+              <CardTitle>Contacto directo</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm text-foreground/70">
+              <div className="flex items-center justify-between">
+                <span>Email</span>
+                <a href={`mailto:${contactEmail}`} className="text-foreground hover:cursor-pointer">{contactEmail}</a>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Calendly</span>
+                <a href={calendlyUrl} target="_blank" rel="noreferrer" className="text-foreground hover:cursor-pointer">Abrir agenda</a>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       {result && (
         <section className="px-6 md:px-10 py-12 border-t border-border bg-background">
           <div className="max-w-3xl mx-auto space-y-8">
@@ -127,9 +169,21 @@ export default function App() {
         </section>
       )}
 
-      <footer className="px-6 md:px-10 py-10 border-t border-border text-sm text-foreground/60 bg-card">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <span>© {new Date().getFullYear()} PymeTech</span>
+      <footer className="px-6 md:px-10 py-12 border-t border-border text-sm bg-card">
+        <div className="max-w-6xl mx-auto grid gap-8 md:grid-cols-[1fr_auto_1fr] items-center">
+          <div className="justify-self-start">
+            <span className="font-semibold text-foreground">PymeTech</span>
+            <p className="mt-1 text-foreground/60">© {new Date().getFullYear()} PymeTech</p>
+          </div>
+          <nav className="justify-self-center flex gap-6 text-foreground/70">
+            <button onClick={scrollToMaquetador} className="hover:text-foreground">Formulario</button>
+            <a href="#portafolio" className="hover:text-foreground">Portafolio</a>
+            <a href="#contacto" className="hover:text-foreground">Contacto</a>
+          </nav>
+          <div className="justify-self-end flex gap-3">
+            <a href={`mailto:${contactEmail}`} className="px-3 py-1.5 rounded-md border border-border hover:bg-muted text-foreground/80 hover:text-foreground">Email</a>
+            <a href={calendlyUrl} target="_blank" rel="noreferrer" className="px-3 py-1.5 rounded-md bg-primary text-primary-foreground hover:opacity-90">Calendly</a>
+          </div>
         </div>
       </footer>
     </div>
