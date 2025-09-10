@@ -92,11 +92,43 @@ export default function App() {
             </CardContent>
           </Card>
           <div className="order-1 md:order-2 space-y-4">
-            <h1 className="text-3xl md:text-4xl font-semibold text-foreground">Software a medida con IA</h1>
+            <h1 className="text-3xl md:text-4xl font-semibold text-foreground">Simulador de cotización para innovación con IA</h1>
             <p className="text-foreground/70">
-              Genera una estimación inicial de alcance, costos y tiempos. Te ayudamos a priorizar y lanzar rápido con impacto real en tu negocio.
+              Obtén al instante una estimación orientativa para construir productos inteligentes: desde asistentes de negocio, automatizaciones y análisis predictivo hasta integraciones con tu stack. Es un simulador: la cifra puede ajustarse tras una validación rápida. Precio desde <span className="font-semibold text-foreground">USD 499</span>.
             </p>
-            <Button variant="outline" onClick={scrollToMaquetador}>Volver al formulario</Button>
+            <Card className="border-dashed">
+              <CardHeader>
+                <CardTitle>Vista previa de la cotización</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="grid gap-2 md:grid-cols-4">
+                  <div className="rounded-lg border border-border p-3 bg-card">
+                    <div className="text-xs text-gray-400">Complejidad</div>
+                    <div className="text-base font-semibold">MEDIA</div>
+                  </div>
+                  <div className="rounded-lg border border-border p-3 bg-card">
+                    <div className="text-xs text-gray-400">Timeline</div>
+                    <div className="text-base font-semibold">6–8 semanas</div>
+                  </div>
+                  <div className="rounded-lg border border-border p-3 bg-card">
+                    <div className="text-xs text-gray-400">Horas</div>
+                    <div className="text-base font-semibold">240h</div>
+                  </div>
+                  <div className="rounded-lg border border-border p-3 bg-card">
+                    <div className="text-xs text-gray-400">Costo (desde)</div>
+                    <div className="text-base font-semibold">USD 499</div>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">Alcance (ejemplo)</h4>
+                  <ul className="list-disc pl-5 space-y-1">
+                    <li className="text-sm text-gray-300">Asistente de ventas con IA para calificar leads — 20h</li>
+                    <li className="text-sm text-gray-300">Automatización de backoffice con agentes IA — 30h</li>
+                    <li className="text-sm text-gray-300">Panel con analítica predictiva y alertas — 40h</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

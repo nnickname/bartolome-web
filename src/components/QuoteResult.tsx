@@ -12,17 +12,17 @@ export function QuoteResult({ data, onDownloadPdf }: Props) {
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Tu cotización</CardTitle>
+          <CardTitle>Tu simulación de propuesta</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           <div className="grid gap-2 md:grid-cols-4">
             <Stat label="Complejidad" value={data.parsed.complexity.toUpperCase()} />
             <Stat label="Timeline" value={data.quote.timeline} />
             <Stat label="Horas" value={String(data.quote.total_hours)} />
-            <Stat label="Costo (USD)" value={`$${data.quote.total_cost}`} />
+            <Stat label="Costo (desde)" value={`USD 499`} />
           </div>
           <div>
-            <h4 className="font-semibold mb-2">Alcance (features)</h4>
+            <h4 className="font-semibold mb-2">Alcance orientativo (capacidades con IA)</h4>
             <ul className="list-disc pl-5 space-y-1">
               {data.quote.scope.map((s, i) => (
                 <li key={i} className="text-sm text-gray-300">{s.feature} — {s.hours}h</li>
@@ -30,12 +30,12 @@ export function QuoteResult({ data, onDownloadPdf }: Props) {
             </ul>
           </div>
 
-          <Button onClick={onDownloadPdf}>Descargar PDF</Button>
+          <Button onClick={onDownloadPdf}>Descargar propuesta (PDF)</Button>
         </CardContent>
       </Card>
 
       <div className="space-y-3">
-        <h3 className="text-lg font-semibold">UI Kit (wireframes y componentes)</h3>
+        <h3 className="text-lg font-semibold">Exploración de UI (wireframes + IA en la experiencia)</h3>
         <div className="grid gap-4 md:grid-cols-3">
           {data.uiKit.map((c: UIComponentDesc, idx: number) => (
             <Card key={idx}>
@@ -51,7 +51,7 @@ export function QuoteResult({ data, onDownloadPdf }: Props) {
 
       <Card>
         <CardContent className="space-y-2 py-6">
-          <p>Tu propuesta está en estado <span className="font-semibold">review</span>. Te escribiré por email si es aceptada.</p>
+          <p>Este resultado es una simulación inicial enfocada en innovación con IA. En una breve revisión afinamos alcance, riesgos y hitos. Precio desde <span className="font-semibold">USD 499</span>.</p>
         </CardContent>
       </Card>
     </div>

@@ -93,9 +93,9 @@ export function Maquetador({ onSubmit, loading }: Props) {
       {step === 0 && (
         <div className="space-y-3">
           <div className="space-y-2">
-            <label className="text-sm text-foreground/70">Describe tu proyecto</label>
+            <label className="text-sm text-foreground/70">Describe tu proyecto (enfoque IA)</label>
             <Textarea
-              placeholder="Ej: Plataforma web para reservas con login, pasarela de pago y panel admin"
+              placeholder="Ej: Asistente de ventas con IA para calificar leads y automatizar propuestas; dashboard con análisis predictivo; integración con ERP."
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
             />
@@ -107,11 +107,11 @@ export function Maquetador({ onSubmit, loading }: Props) {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <label className="text-sm text-foreground/70">Objetivo principal</label>
-            <Input placeholder="Ej: aumentar conversiones 20%" value={objetivo} onChange={(e)=>setObjetivo(e.target.value)} />
+            <Input placeholder="Ej: reducir tiempos operativos 30% con agentes IA" value={objetivo} onChange={(e)=>setObjetivo(e.target.value)} />
           </div>
           <div className="space-y-2">
             <label className="text-sm text-foreground/70">Público objetivo</label>
-            <Input placeholder="Ej: tiendas minoristas, médicos, estudiantes..." value={publico} onChange={(e)=>setPublico(e.target.value)} />
+            <Input placeholder="Ej: equipo comercial, logística, atención al cliente" value={publico} onChange={(e)=>setPublico(e.target.value)} />
           </div>
         </div>
       )}
@@ -131,10 +131,10 @@ export function Maquetador({ onSubmit, loading }: Props) {
             <div className="space-y-2">
               <label className="text-sm text-foreground/70">Presupuesto estimado</label>
               <Select value={presupuesto} onChange={(e)=>setPresupuesto(e.target.value)}>
-                <option value="<5k">Menos de 5k</option>
+                <option value="<1k">Menos de 1k</option>
+                <option value="1k-5k">1k - 5k</option>
                 <option value="5k-15k">5k - 15k</option>
-                <option value="15k-40k">15k - 40k</option>
-                <option value=">40k">Más de 40k</option>
+                <option value=">15k">Más de 15k</option>
               </Select>
             </div>
           </div>
@@ -171,7 +171,7 @@ export function Maquetador({ onSubmit, loading }: Props) {
         {step < totalSteps - 1 ? (
           <Button onClick={onNext} disabled={!canGoNext || !!loading}>Siguiente</Button>
         ) : (
-          <Button onClick={onFinalSubmit} disabled={!composedPrompt || !!loading}>{loading ? 'Generando...' : 'Generar cotización'}</Button>
+          <Button onClick={onFinalSubmit} disabled={!composedPrompt || !!loading}>{loading ? 'Generando...' : 'Simular propuesta'}</Button>
         )}
       </div>
     </div>
