@@ -117,23 +117,14 @@ export default function App() {
         <div className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div className="space-y-4 order-2 md:order-1">
             <h2 className="text-2xl md:text-3xl font-semibold">¿Listo para hablar?</h2>
-            <p className="text-foreground/70">Escríbenos o agenda una llamada para revisar tu proyecto y priorizar el siguiente paso.</p>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href={`mailto:${contactEmail}?subject=Consulta%20PymeTech&body=Hola%20PymeTech,%20tengo%20una%20consulta%20sobre%20un%20proyecto.`}
-                className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors h-11 px-5 border border-border bg-card hover:bg-muted"
-              >
-                Escríbenos
-              </a>
-              <a
-                href={calendlyUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors h-11 px-5 bg-primary text-primary-foreground hover:opacity-90"
-              >
-                Agendar llamada
-              </a>
-            </div>
+            <p className="text-foreground/70">Desarrollamos software a medida con IA para PYMEs en LATAM. Priorizamos rápido, entregamos en semanas y medimos impacto real en tu negocio.</p>
+            <ul className="list-disc pl-5 text-foreground/70 space-y-1 text-sm">
+              <li>De idea a MVP en 6–8 semanas, con foco en conversión.</li>
+              <li>Integraciones con tu stack (ERP, pasarelas de pago, BI).</li>
+              <li>Automatizaciones con IA para reducir costes y tiempos operativos.</li>
+              <li>Acompañamiento de producto: métricas, experimentos y growth.</li>
+            </ul>
+            <p className="text-foreground/70 text-sm">Cuando quieras, en la tarjeta de la derecha tienes nuestro email y la agenda.</p>
           </div>
           <Card className="order-1 md:order-2">
             <CardHeader>
@@ -180,10 +171,7 @@ export default function App() {
             <a href="#portafolio" className="hover:text-foreground">Portafolio</a>
             <a href="#contacto" className="hover:text-foreground">Contacto</a>
           </nav>
-          <div className="justify-self-end flex gap-3">
-            <a href={`mailto:${contactEmail}`} className="px-3 py-1.5 rounded-md border border-border hover:bg-muted text-foreground/80 hover:text-foreground">Email</a>
-            <a href={calendlyUrl} target="_blank" rel="noreferrer" className="px-3 py-1.5 rounded-md bg-primary text-primary-foreground hover:opacity-90">Calendly</a>
-          </div>
+          <div className="justify-self-end text-foreground/60">Consultoría y desarrollo de software a medida con IA.</div>
         </div>
       </footer>
     </div>
