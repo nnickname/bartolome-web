@@ -88,7 +88,7 @@ export default function App() {
           </div>
 
           <SectionHeading
-            title="Software con IA para constructoras — resultados en semanas"
+            title="Software con IA para PYMES — resultados en semanas"
             subtitle="Priorizamos un flujo, lo automatizamos y medimos impacto. Comencemos por el formulario."
           />
           
@@ -206,7 +206,6 @@ export default function App() {
           <SectionHeading title="Contacto" subtitle="Email y agenda para coordinar" />
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div className="space-y-4 order-2 md:order-1">
-              <h2 className="text-2xl md:text-3xl font-semibold">¿Listo para hablar?</h2>
               <p className="text-foreground/70">Te ayudamos a identificar el primer flujo con mayor ROI, implementarlo en semanas y medir impacto.</p>
               <ul className="list-disc pl-5 text-foreground/70 space-y-1 text-sm">
                 <li>Arrancamos con un flujo acotado y medible.</li>
