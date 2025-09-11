@@ -4,16 +4,17 @@ export type SectionHeadingProps = {
   title: string
   subtitle?: string
   align?: 'left' | 'center'
+  underline?: boolean
   className?: string
 }
 
-export default function SectionHeading({ title, subtitle, align = 'left', className }: SectionHeadingProps) {
+export default function SectionHeading({ title, subtitle, align = 'left', underline = true, className }: SectionHeadingProps) {
   return (
     <div className={className ?? ''}>
       <div className={align === 'center' ? 'text-center' : 'text-left'}>
         <h2 className="text-2xl mr-2 md:text-3xl font-semibold inline-block relative pb-2">
           {title}
-          <span className="block absolute left-0 -bottom-0.5 h-[3px] bg-primary" style={{ width: '50%' }} />
+          {underline && <span className="block absolute left-0 -bottom-0.5 h-[3px] bg-primary" style={{ width: '50%' }} />}
         </h2>
         {subtitle && (
           <div className={align === 'center' ? 'mt-2 inline-block' : 'mt-2 inline-block'}>

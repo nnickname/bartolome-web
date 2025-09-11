@@ -114,6 +114,7 @@ export default function App() {
             className="mt-10"
             title="Vista previa"
             subtitle="Ejemplo de interfaz y alcance inicial"
+            underline={false}
           />
 
           <div className="grid md:grid-cols-2 gap-10 items-start">
@@ -164,7 +165,7 @@ export default function App() {
 
       <section className="px-6 md:px-10 py-12 bg-background border-t border-border">
         <div className="max-w-6xl mx-auto space-y-6">
-          <SectionHeading title="Demo IA" subtitle="Subí ejemplos y mirá funcionalidades sugeridas" />
+          <SectionHeading title="Demo IA" underline={true} />
           <IADemoUpload onPrimaryClick={scrollToMaquetador} onSecondaryHref={calendlyUrl} />
         </div>
       </section>
@@ -175,7 +176,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <SectionHeading title="Portafolio" subtitle="Casos por tipología" />
+              <SectionHeading title="Portafolio" subtitle="Casos por tipología" underline={false} />
             </div>
             <Button variant="outline" onClick={scrollToMaquetador}>Completar formulario</Button>
           </div>
@@ -186,8 +187,8 @@ export default function App() {
       <GuaranteesPRL />
 
       <section ref={maquetadorRef} id="simulador" className="px-6 md:px-10 py-12 bg-background border-t border-border">
-        <div className="max-w-3xl mx-auto space-y-6">
-          <SectionHeading title="Simulador de propuesta" subtitle="Contanos tu necesidad y generamos el alcance" />
+        <div className="max-w-6xl mx-auto space-y-6">
+          <SectionHeading title="Simulador de propuesta" underline={true} />
           <Card>
             <CardHeader>
               <CardTitle>Contanos tu necesidad</CardTitle>
@@ -203,7 +204,7 @@ export default function App() {
       <section id="contacto" className="px-6 md:px-10 py-16 border-t border-border relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-muted to-transparent" />
         <div className="relative max-w-6xl mx-auto space-y-6">
-          <SectionHeading title="Contacto" subtitle="Email y agenda para coordinar" />
+          <SectionHeading title="Contacto" subtitle="Email y agenda para coordinar" underline={false} />
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div className="space-y-4 order-2 md:order-1">
               <p className="text-foreground/70">Te ayudamos a identificar el primer flujo con mayor ROI, implementarlo en semanas y medir impacto.</p>

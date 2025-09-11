@@ -6,7 +6,7 @@ export default function GuaranteesPRL() {
   return (
     <section className="px-6 md:px-10 py-12 bg-background border-t border-border">
       <div className="max-w-6xl mx-auto space-y-6">
-        <SectionHeading title="Garantías y PRL" subtitle="Trazabilidad, seguridad y calidad" />
+        <SectionHeading title="Garantías y PRL" />
         <div className="grid md:grid-cols-3 gap-6">
           <Card>
             <CardHeader>
