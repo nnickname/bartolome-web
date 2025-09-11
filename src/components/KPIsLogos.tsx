@@ -1,9 +1,11 @@
 import React from 'react'
+import SectionHeading from './SectionHeading'
 
 export default function KPIsLogos() {
   return (
     <section className="px-6 md:px-10 py-12 bg-muted">
       <div className="max-w-6xl mx-auto grid gap-10">
+        <SectionHeading title="Resultados y confianza" subtitle="Métricas y clientes del sector" />
         <div className="grid md:grid-cols-3 gap-4 text-center">
           <div className="rounded-lg border border-border bg-card p-6">
             <div className="text-3xl font-extrabold">-27%</div>

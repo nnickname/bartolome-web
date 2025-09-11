@@ -14,6 +14,7 @@ import HeroCalculator from './components/HeroCalculator'
 import IADemoUpload from './components/IADemoUpload'
 import KPIsLogos from './components/KPIsLogos'
 import GuaranteesPRL from './components/GuaranteesPRL'
+import SectionHeading from './components/SectionHeading'
 
 
 export default function App() {
@@ -85,7 +86,11 @@ export default function App() {
               <a href="#portafolio" className="hover:text-foreground">Portafolio</a>
             </nav>
           </div>
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-brand animate-gradient-x">Presupuestos de obra en minutos con IA — sin sorpresas</h1>
+
+          <SectionHeading
+            title="Presupuestos de obra en minutos con IA — sin sorpresas"
+            subtitle="Subí tus planos y generamos partidas, tiempos y coste"
+          />
           
           <div className="relative my-12">
             <div className="h-px w-full mt-12 mb-4 bg-border" />
@@ -104,6 +109,12 @@ export default function App() {
           </div>
 
           <HeroCalculator onPrimaryClick={scrollToMaquetador} />
+
+          <SectionHeading
+            className="mt-10"
+            title="Vista previa"
+            subtitle="Cómo se vería y un alcance ejemplo"
+          />
 
           <div className="grid md:grid-cols-2 gap-10 items-start">
             <Card className="border-dashed">
@@ -152,7 +163,8 @@ export default function App() {
       </section>
 
       <section className="px-6 md:px-10 py-12 bg-background border-t border-border">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto space-y-6">
+          <SectionHeading title="Demo IA" subtitle="Subí planos y mirá partidas en tiempo real" />
           <IADemoUpload />
         </div>
       </section>
@@ -162,7 +174,9 @@ export default function App() {
       <section id="portafolio" className="px-6 md:px-10 py-12 bg-muted">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-semibold">Portafolio</h2>
+            <div>
+              <SectionHeading title="Portafolio" subtitle="Casos por tipología" />
+            </div>
             <Button variant="outline" onClick={scrollToMaquetador}>Obtener cotización</Button>
           </div>
           <PortfolioSlider items={portfolio} />
@@ -172,7 +186,8 @@ export default function App() {
       <GuaranteesPRL />
 
       <section ref={maquetadorRef} id="simulador" className="px-6 md:px-10 py-12 bg-background border-t border-border">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto space-y-6">
+          <SectionHeading title="Simulador de propuesta" subtitle="Contanos tu necesidad y generamos el alcance" />
           <Card>
             <CardHeader>
               <CardTitle>Contanos tu necesidad</CardTitle>
@@ -187,33 +202,36 @@ export default function App() {
 
       <section id="contacto" className="px-6 md:px-10 py-16 border-t border-border relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-muted to-transparent" />
-        <div className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-          <div className="space-y-4 order-2 md:order-1">
-            <h2 className="text-2xl md:text-3xl font-semibold">¿Listo para hablar?</h2>
-            <p className="text-foreground/70">Desarrollamos software a medida con IA para PYMEs en LATAM. Priorizamos rápido, entregamos en semanas y medimos impacto real en tu negocio.</p>
-            <ul className="list-disc pl-5 text-foreground/70 space-y-1 text-sm">
-              <li>De idea a MVP en 6–8 semanas, con foco en conversión.</li>
-              <li>Integraciones con tu stack (ERP, pasarelas de pago, BI).</li>
-              <li>Automatizaciones con IA para reducir costes y tiempos operativos.</li>
-              <li>Acompañamiento de producto: métricas, experimentos y growth.</li>
-            </ul>
-            <p className="text-foreground/70 text-sm">Cuando quieras, en la tarjeta de la derecha tienes nuestro email y la agenda.</p>
+        <div className="relative max-w-6xl mx-auto space-y-6">
+          <SectionHeading title="Contacto" subtitle="Email y agenda para coordinar" />
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div className="space-y-4 order-2 md:order-1">
+              <h2 className="text-2xl md:text-3xl font-semibold">¿Listo para hablar?</h2>
+              <p className="text-foreground/70">Desarrollamos software a medida con IA para PYMEs en LATAM. Priorizamos rápido, entregamos en semanas y medimos impacto real en tu negocio.</p>
+              <ul className="list-disc pl-5 text-foreground/70 space-y-1 text-sm">
+                <li>De idea a MVP en 6–8 semanas, con foco en conversión.</li>
+                <li>Integraciones con tu stack (ERP, pasarelas de pago, BI).</li>
+                <li>Automatizaciones con IA para reducir costes y tiempos operativos.</li>
+                <li>Acompañamiento de producto: métricas, experimentos y growth.</li>
+              </ul>
+              <p className="text-foreground/70 text-sm">Cuando quieras, en la tarjeta de la derecha tienes nuestro email y la agenda.</p>
+            </div>
+            <Card className="order-1 md:order-2">
+              <CardHeader>
+                <CardTitle>Contacto directo</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm text-foreground/70">
+                <div className="flex items-center justify-between">
+                  <span>Email</span>
+                  <a href={`mailto:${contactEmail}`} className="text-foreground hover:cursor-pointer">{contactEmail}</a>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span>Calendly</span>
+                  <a href={calendlyUrl} target="_blank" rel="noreferrer" className="text-foreground hover:cursor-pointer">Abrir agenda</a>
+                </div>
+              </CardContent>
+            </Card>
           </div>
-          <Card className="order-1 md:order-2">
-            <CardHeader>
-              <CardTitle>Contacto directo</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-foreground/70">
-              <div className="flex items-center justify-between">
-                <span>Email</span>
-                <a href={`mailto:${contactEmail}`} className="text-foreground hover:cursor-pointer">{contactEmail}</a>
-              </div>
-              <div className="flex items-center justify-between">
-                <span>Calendly</span>
-                <a href={calendlyUrl} target="_blank" rel="noreferrer" className="text-foreground hover:cursor-pointer">Abrir agenda</a>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </section>
 
