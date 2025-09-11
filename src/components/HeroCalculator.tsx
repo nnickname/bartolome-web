@@ -74,12 +74,12 @@ export default function HeroCalculator({ onPrimaryClick, onSecondaryHref }: Hero
 
         <div className="rounded-lg border border-border bg-card p-4 space-y-2">
           <div className="text-xs text-foreground/70">Ahorro/CapEx evitado estimado</div>
-          <div className="text-lg font-semibold">{fmt(min)} – {fmt(max)}</div>
+          <div className="text-lg font-semibold">{fmt(min / 10)} – {fmt(max / 10)}</div>
           <p className="text-xs text-foreground/60">Estimación orientativa del valor generado por automatizar y estandarizar procesos clave. Profundizamos con tu caso.</p>
           <div className="flex gap-2 pt-1">
             <Button onClick={onPrimaryClick}>Completar formulario</Button>
             {onSecondaryHref && (
-              <Button variant="outline" asChild>
+              <Button variant="outline">
                 <a href={onSecondaryHref}>Agendar</a>
               </Button>
             )}

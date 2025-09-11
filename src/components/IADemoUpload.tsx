@@ -31,6 +31,24 @@ export default function IADemoUpload({ onPrimaryClick, onSecondaryHref }: IADemo
 
   const completed = step >= steps.length
 
+  // Auto-iniciar el demo cuando el componente entra al viewport si aún no se subió nada
+  useEffect(() => {
+    if (running || fileName) return
+    const el = document.getElementById('demo-ia')
+    if (!el) return
+    const observer = new IntersectionObserver((entries) => {
+      const isVisible = entries.some((entry) => entry.isIntersecting)
+      if (isVisible) {
+        setFileName('Ejemplo - Partes diarios.xlsx')
+        setStep(0)
+        setRunning(true)
+        observer.disconnect()
+      }
+    }, { threshold: 0.4 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [running, fileName])
+
   const onChooseFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0]
     if (f) {
@@ -55,16 +73,7 @@ export default function IADemoUpload({ onPrimaryClick, onSecondaryHref }: IADemo
         <CardTitle>Demo: cómo la IA acelera tus flujos</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="grid md:grid-cols-[1fr_auto] gap-3 items-end">
-          <div>
-            <label className="text-sm text-foreground/70">Subí un ejemplo (partes, pliegos, planillas)</label>
-            <div className="mt-2">
-              <input type="file" accept=".pdf,.xlsx,.csv,.zip" onChange={onChooseFile} />
-            </div>
-            {fileName && <p className="text-xs text-foreground/60 mt-1">Archivo: {fileName}</p>}
-          </div>
-          <Button onClick={() => { setStep(0); setRunning(true) }} disabled={!fileName || running}>Procesar con IA</Button>
-        </div>
+          
 
         <ol className="flex items-center gap-3">
           {steps.map((label, i) => {
@@ -123,9 +132,7 @@ export default function IADemoUpload({ onPrimaryClick, onSecondaryHref }: IADemo
               <div className="flex gap-2">
                 <Button onClick={onPrimaryClick}>Completar formulario</Button>
                 {onSecondaryHref && (
-                  <Button variant="outline" asChild>
-                    <a href={onSecondaryHref}>Agendar</a>
-                  </Button>
+                  <Button variant="outline" href={onSecondaryHref}>Agendar</Button>
                 )}
               </div>
             </div>
