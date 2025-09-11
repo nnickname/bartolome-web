@@ -4,16 +4,28 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Paleta suave: gris cálido + lavanda, acento violeta
-        background: "#EEEEEE", // crema muy claro para fondos
-        foreground: "#171717", // texto principal oscuro
-        card: "#FFFFFF", // tarjetas blancas
-        muted: "#F8EDED", // lavanda muy suave para secciones
+        // Paleta actualizada: primary verde neón océano, secundarios púrpura + navy
+        background: "#EFF3FF", // hielo
+        surface: "#FFFFFF",
+        card: "#FFFFFF",
+        foreground: "#121212",
+        muted: "#F5F7FB",
+        border: "#E6EAF5",
         primary: {
-          DEFAULT: "#8E1616", // Rojo moderado (acento)
-          foreground: "#FFFFFF"
+          DEFAULT: "#00EBC1", // verde neón oceano
+          foreground: "#001B16",
+          variant: "#00BFA5",
         },
-        border: "#FFDEDE" // borde suave
+        secondary: {
+          DEFAULT: "#7B6CF6", // púrpura suave
+          foreground: "#FFFFFF",
+          variant: "#5A4AE3",
+        },
+        navy: "#1B1742", // acento oscuro
+        error: {
+          DEFAULT: "#B00020",
+          foreground: "#FFFFFF",
+        }
       },
       borderRadius: {
         md: "10px",

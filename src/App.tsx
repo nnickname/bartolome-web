@@ -10,6 +10,10 @@ import { InlineWidget } from 'react-calendly'
 import { generateQuotePdf } from './lib/pdf'
 import { PortfolioSlider } from './components/PortfolioSlider'
 import AiAppPreview from './components/AiAppPreview'
+import HeroCalculator from './components/HeroCalculator'
+import IADemoUpload from './components/IADemoUpload'
+import KPIsLogos from './components/KPIsLogos'
+import GuaranteesPRL from './components/GuaranteesPRL'
 
 
 export default function App() {
@@ -81,7 +85,7 @@ export default function App() {
               <a href="#portafolio" className="hover:text-foreground">Portafolio</a>
             </nav>
           </div>
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-#8E1616-500 to-red-500 animate-gradient-x">Simulador de cotización para innovación</h1>
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-brand animate-gradient-x">Presupuestos de obra en minutos con IA — sin sorpresas</h1>
           
           <div className="relative my-12">
             <div className="h-px w-full mt-12 mb-4 bg-border" />
@@ -98,6 +102,9 @@ export default function App() {
               <button onClick={scrollToMaquetador} className="text-sm font-medium text-foreground hover:underline">Cotizar al instante</button>
             </div>
           </div>
+
+          <HeroCalculator onPrimaryClick={scrollToMaquetador} />
+
           <div className="grid md:grid-cols-2 gap-10 items-start">
             <Card className="border-dashed">
               <CardHeader>
@@ -144,6 +151,14 @@ export default function App() {
         </div>
       </section>
 
+      <section className="px-6 md:px-10 py-12 bg-background border-t border-border">
+        <div className="max-w-6xl mx-auto">
+          <IADemoUpload />
+        </div>
+      </section>
+
+      <KPIsLogos />
+
       <section id="portafolio" className="px-6 md:px-10 py-12 bg-muted">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-6">
@@ -154,6 +169,8 @@ export default function App() {
         </div>
       </section>
 
+      <GuaranteesPRL />
+
       <section ref={maquetadorRef} id="simulador" className="px-6 md:px-10 py-12 bg-background border-t border-border">
         <div className="max-w-3xl mx-auto">
           <Card>
@@ -162,7 +179,7 @@ export default function App() {
             </CardHeader>
             <CardContent>
               <Maquetador onSubmit={onSubmit} loading={loading} />
-              {error && <p className="text-sm text-red-600 mt-3">{error}</p>}
+              {error && <p className="text-sm text-error mt-3">{error}</p>}
             </CardContent>
           </Card>
         </div>
