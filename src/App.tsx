@@ -82,21 +82,21 @@ export default function App() {
           <div className="flex items-center justify-between">
             <span className="header-title">WeApps</span>
             <nav className="hidden md:flex gap-6 text-sm text-foreground/70">
-              <button onClick={scrollToMaquetador} className="hover:text-foreground">Cotizar al instante</button>
-              <a href="#portafolio" className="hover:text-foreground">Portafolio</a>
+              <button onClick={scrollToMaquetador} className="hover:text-foreground">Formulario</button>
+              <Button variant="ghost" href={calendlyUrl} target="_blank" rel="noreferrer">Agendar</Button>
             </nav>
           </div>
 
           <SectionHeading
-            title="Presupuestos de obra en minutos con IA — sin sorpresas"
-            subtitle="Subí tus planos y generamos partidas, tiempos y coste"
+            title="Software con IA para constructoras — resultados en semanas"
+            subtitle="Priorizamos un flujo, lo automatizamos y medimos impacto. Comencemos por el formulario."
           />
           
           <div className="relative my-12">
             <div className="h-px w-full mt-12 mb-4 bg-border" />
             <button
               onClick={scrollToMaquetador}
-              aria-label="Cotizar al instante"
+              aria-label="Ir al formulario"
               className="group absolute inset-x-0 -top-6 mx-auto h-12 w-12 rounded-full bg-foreground text-background grid place-items-center shadow-md hover:opacity-90 focus:outline-none animate-bounce"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6 transition-transform group-hover:translate-y-0.5">
@@ -104,16 +104,16 @@ export default function App() {
               </svg>
             </button>
             <div className="pt-8 text-center">
-              <button onClick={scrollToMaquetador} className="text-sm font-medium text-foreground hover:underline">Cotizar al instante</button>
+              <button onClick={scrollToMaquetador} className="text-sm font-medium text-foreground hover:underline">Completar formulario</button>
             </div>
           </div>
 
-          <HeroCalculator onPrimaryClick={scrollToMaquetador} />
+          <HeroCalculator onPrimaryClick={scrollToMaquetador} onSecondaryHref={calendlyUrl} />
 
           <SectionHeading
             className="mt-10"
             title="Vista previa"
-            subtitle="Cómo se vería y un alcance ejemplo"
+            subtitle="Ejemplo de interfaz y alcance inicial"
           />
 
           <div className="grid md:grid-cols-2 gap-10 items-start">
@@ -151,9 +151,9 @@ export default function App() {
                 <div>
                   <h4 className="font-semibold mb-2">Alcance (ejemplo constructora)</h4>
                   <ul className="list-disc pl-5 space-y-1">
-                    <li className="text-sm text-gray-300">Carga de partes diarios con fotos (web/móvil) — 20h</li>
-                    <li className="text-sm text-gray-300">Comparación avance vs. plan y alertas de desvío — 30h</li>
-                    <li className="text-sm text-gray-300">Panel de obra con hitos y certificados — 40h</li>
+                    <li className="text-sm text-gray-300">Partes diarios y fotos centralizados — 20h</li>
+                    <li className="text-sm text-gray-300">Alertas de desvíos y tablero — 30h</li>
+                    <li className="text-sm text-gray-300">Certificados e hitos — 40h</li>
                   </ul>
                 </div>
               </CardContent>
@@ -164,8 +164,8 @@ export default function App() {
 
       <section className="px-6 md:px-10 py-12 bg-background border-t border-border">
         <div className="max-w-6xl mx-auto space-y-6">
-          <SectionHeading title="Demo IA" subtitle="Subí planos y mirá partidas en tiempo real" />
-          <IADemoUpload />
+          <SectionHeading title="Demo IA" subtitle="Subí ejemplos y mirá funcionalidades sugeridas" />
+          <IADemoUpload onPrimaryClick={scrollToMaquetador} onSecondaryHref={calendlyUrl} />
         </div>
       </section>
 
@@ -177,7 +177,7 @@ export default function App() {
             <div>
               <SectionHeading title="Portafolio" subtitle="Casos por tipología" />
             </div>
-            <Button variant="outline" onClick={scrollToMaquetador}>Obtener cotización</Button>
+            <Button variant="outline" onClick={scrollToMaquetador}>Completar formulario</Button>
           </div>
           <PortfolioSlider items={portfolio} />
         </div>
@@ -207,14 +207,17 @@ export default function App() {
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div className="space-y-4 order-2 md:order-1">
               <h2 className="text-2xl md:text-3xl font-semibold">¿Listo para hablar?</h2>
-              <p className="text-foreground/70">Desarrollamos software a medida con IA para PYMEs en LATAM. Priorizamos rápido, entregamos en semanas y medimos impacto real en tu negocio.</p>
+              <p className="text-foreground/70">Te ayudamos a identificar el primer flujo con mayor ROI, implementarlo en semanas y medir impacto.</p>
               <ul className="list-disc pl-5 text-foreground/70 space-y-1 text-sm">
-                <li>De idea a MVP en 6–8 semanas, con foco en conversión.</li>
-                <li>Integraciones con tu stack (ERP, pasarelas de pago, BI).</li>
-                <li>Automatizaciones con IA para reducir costes y tiempos operativos.</li>
-                <li>Acompañamiento de producto: métricas, experimentos y growth.</li>
+                <li>Arrancamos con un flujo acotado y medible.</li>
+                <li>Integraciones con tu stack (ERP, BI, correo, WhatsApp).</li>
+                <li>Automatizaciones con IA y tableros de control.</li>
+                <li>Soporte y evolución trimestral.</li>
               </ul>
-              <p className="text-foreground/70 text-sm">Cuando quieras, en la tarjeta de la derecha tienes nuestro email y la agenda.</p>
+              <div className="flex gap-2">
+                <Button onClick={scrollToMaquetador}>Completar formulario</Button>
+                <Button variant="outline" href={calendlyUrl} target="_blank" rel="noreferrer">Agendar</Button>
+              </div>
             </div>
             <Card className="order-1 md:order-2">
               <CardHeader>
@@ -262,7 +265,7 @@ export default function App() {
             <a href="#portafolio" className="hover:text-foreground">Portafolio</a>
             <a href="#contacto" className="hover:text-foreground">Contacto</a>
           </nav>
-          <div className="justify-self-end text-foreground/60">Consultoría y desarrollo de software a medida con IA.</div>
+          <div className="justify-self-end text-foreground/60">Consultoría y desarrollo de software con IA para constructoras.</div>
         </div>
       </footer>
     </div>

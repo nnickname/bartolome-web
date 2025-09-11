@@ -3,16 +3,21 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Button } from './ui/button'
 import { Table, THead, TBody, TR, TH, TD } from './ui/table'
 
-export default function IADemoUpload() {
+export type IADemoUploadProps = {
+  onPrimaryClick?: () => void
+  onSecondaryHref?: string
+}
+
+export default function IADemoUpload({ onPrimaryClick, onSecondaryHref }: IADemoUploadProps) {
   const [fileName, setFileName] = useState<string | null>(null)
   const [step, setStep] = useState<number>(0)
   const [running, setRunning] = useState(false)
 
   const steps = [
-    'Leyendo planos',
-    'Extrayendo mediciones',
-    'Calculando rendimientos',
-    'Generando partidas',
+    'Leyendo adjuntos',
+    'Extrayendo datos',
+    'Generando insights',
+    'Armando tablero',
   ]
 
   useEffect(() => {
@@ -37,27 +42,24 @@ export default function IADemoUpload() {
 
   const rows = useMemo(() => (
     [
-      { partida: 'Movimiento de suelo', unidad: 'm³', cantidad: 1200, unitario: 18.5 },
-      { partida: 'Hormigón H21', unidad: 'm³', cantidad: 850, unitario: 155 },
-      { partida: 'Acero ADN 420', unidad: 'kg', cantidad: 42000, unitario: 2.1 },
-      { partida: 'Mampostería hueca 18cm', unidad: 'm²', cantidad: 2600, unitario: 23 },
+      { funcionalidad: 'Partes diarios centralizados', area: 'Obra', impacto: '-2h/día consolidación', estado: 'Listo' },
+      { funcionalidad: 'Detección de desvíos vs. plan', area: 'Control', impacto: '-15% desviaciones', estado: 'Listo' },
+      { funcionalidad: 'Certificados y hitos', area: 'Oficina técnica', impacto: '+30% velocidad', estado: 'Listo' },
+      { funcionalidad: 'Integración ERP/BI', area: 'Gestión', impacto: 'Datos en tiempo real', estado: 'Opcional' },
     ]
   ), [])
-
-  const total = rows.reduce((acc, r) => acc + r.cantidad * r.unitario, 0)
-  const fmt = (n: number) => new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n)
 
   return (
     <Card id="demo-ia" className="border-dashed">
       <CardHeader>
-        <CardTitle>Demo: de planos a partidas en minutos</CardTitle>
+        <CardTitle>Demo: cómo la IA acelera tus flujos</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid md:grid-cols-[1fr_auto] gap-3 items-end">
           <div>
-            <label className="text-sm text-foreground/70">Subí tus planos PDF/DWG</label>
+            <label className="text-sm text-foreground/70">Subí un ejemplo (partes, pliegos, planillas)</label>
             <div className="mt-2">
-              <input type="file" accept=".pdf,.dwg" onChange={onChooseFile} />
+              <input type="file" accept=".pdf,.xlsx,.csv,.zip" onChange={onChooseFile} />
             </div>
             {fileName && <p className="text-xs text-foreground/60 mt-1">Archivo: {fileName}</p>}
           </div>
@@ -98,34 +100,38 @@ export default function IADemoUpload() {
               <Table className="table-auto">
                 <THead>
                   <TR>
-                    <TH>Partida</TH>
-                    <TH>Unidad</TH>
-                    <TH className="text-right">Cantidad</TH>
-                    <TH className="text-right">Unitario</TH>
-                    <TH className="text-right">Total</TH>
+                    <TH>Funcionalidad</TH>
+                    <TH>Área</TH>
+                    <TH>Impacto</TH>
+                    <TH className="text-right">Estado</TH>
                   </TR>
                 </THead>
                 <TBody>
                   {rows.map((r, idx) => (
                     <TR key={idx}>
-                      <TD>{r.partida}</TD>
-                      <TD>{r.unidad}</TD>
-                      <TD className="text-right">{r.cantidad.toLocaleString('es-AR')}</TD>
-                      <TD className="text-right">{fmt(r.unitario)}</TD>
-                      <TD className="text-right">{fmt(r.cantidad * r.unitario)}</TD>
+                      <TD>{r.funcionalidad}</TD>
+                      <TD>{r.area}</TD>
+                      <TD>{r.impacto}</TD>
+                      <TD className="text-right">{r.estado}</TD>
                     </TR>
                   ))}
                 </TBody>
               </Table>
             </div>
-            <div className="flex items-center justify-between">
-              <p className="text-sm text-foreground/70">Total preliminar</p>
-              <div className="text-lg font-semibold">{fmt(total)}</div>
+            <div className="flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
+              <p className="text-xs text-foreground/60">¿Querés este flujo en tu empresa? Avanzá al siguiente paso.</p>
+              <div className="flex gap-2">
+                <Button onClick={onPrimaryClick}>Completar formulario</Button>
+                {onSecondaryHref && (
+                  <Button variant="outline" asChild>
+                    <a href={onSecondaryHref}>Agendar</a>
+                  </Button>
+                )}
+              </div>
             </div>
-            <p className="text-xs text-foreground/60">Puedes solicitar revisión humana para cerrar precio y alcance definitivo.</p>
           </div>
         ) : (
-          <p className="text-xs text-foreground/60">Mostramos un resultado de ejemplo cuando termina el procesamiento.</p>
+          <p className="text-xs text-foreground/60">Mostramos un ejemplo de funcionalidades cuando termina el procesamiento.</p>
         )}
       </CardContent>
     </Card>

@@ -6,6 +6,7 @@ import { Select } from './ui/select'
 
 export type HeroCalculatorProps = {
   onPrimaryClick?: () => void
+  onSecondaryHref?: string
 }
 
 const obraTypes = [
@@ -29,7 +30,7 @@ const baseCostPerM2: Record<string, number> = {
   oficinas: 950,
 }
 
-export default function HeroCalculator({ onPrimaryClick }: HeroCalculatorProps) {
+export default function HeroCalculator({ onPrimaryClick, onSecondaryHref }: HeroCalculatorProps) {
   const [obra, setObra] = useState('industrial')
   const [m2, setM2] = useState('1200')
   const [ubicacion, setUbicacion] = useState('caba')
@@ -47,22 +48,22 @@ export default function HeroCalculator({ onPrimaryClick }: HeroCalculatorProps) 
   return (
     <Card className="border-dashed">
       <CardHeader>
-        <CardTitle>Calculadora rápida para constructoras</CardTitle>
+        <CardTitle>¿Qué impacto tendría tu software?</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-4 md:grid-cols-[2fr_1fr] items-start">
         <div className="grid gap-3 md:grid-cols-3">
           <div className="space-y-2">
-            <label className="text-sm text-foreground/70">Tipo de obra</label>
+            <label className="text-sm text-foreground/70">Foco del software</label>
             <Select value={obra} onChange={(e)=>setObra(e.target.value)}>
               {obraTypes.map(t => (<option key={t.id} value={t.id}>{t.label}</option>))}
             </Select>
           </div>
           <div className="space-y-2">
-            <label className="text-sm text-foreground/70">Metros cuadrados</label>
+            <label className="text-sm text-foreground/70">Volumen (m² o equivalencia)</label>
             <Input type="number" min={0} value={m2} onChange={(e)=>setM2(e.target.value)} placeholder="Ej: 1200" />
           </div>
           <div className="space-y-2">
-            <label className="text-sm text-foreground/70">Ubicación</label>
+            <label className="text-sm text-foreground/70">Ubicación (para contexto)</label>
             <Select value={ubicacion} onChange={(e)=>setUbicacion(e.target.value)}>
               <option value="caba">CABA</option>
               <option value="gba">GBA</option>
@@ -72,14 +73,16 @@ export default function HeroCalculator({ onPrimaryClick }: HeroCalculatorProps) 
         </div>
 
         <div className="rounded-lg border border-border bg-card p-4 space-y-2">
-          <div className="text-xs text-foreground/70">Rango estimado</div>
+          <div className="text-xs text-foreground/70">Ahorro/CapEx evitado estimado</div>
           <div className="text-lg font-semibold">{fmt(min)} – {fmt(max)}</div>
-          <p className="text-xs text-foreground/60">Estimación orientativa según tipología y ubicación. Refinamos al subir planos.</p>
+          <p className="text-xs text-foreground/60">Estimación orientativa del valor generado por automatizar y estandarizar procesos clave. Profundizamos con tu caso.</p>
           <div className="flex gap-2 pt-1">
-            <Button onClick={onPrimaryClick}>Subir planos / cotizar</Button>
-            <Button variant="outline" asChild>
-              <a href="#demo-ia">Ver demo (2 min)</a>
-            </Button>
+            <Button onClick={onPrimaryClick}>Completar formulario</Button>
+            {onSecondaryHref && (
+              <Button variant="outline" asChild>
+                <a href={onSecondaryHref}>Agendar</a>
+              </Button>
+            )}
           </div>
         </div>
       </CardContent>
