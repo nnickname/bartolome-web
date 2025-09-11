@@ -47,10 +47,10 @@ export function AiAppPreview() {
   )
 }
 
-function PhoneFrame({ children, gradient, platform = 'ios' }: { children: React.ReactNode; gradient?: string; platform?: 'ios' | 'android' }) {
+export function PhoneFrame({ children, gradient, platform = 'ios' }: { children: React.ReactNode; gradient?: string; platform?: 'ios' | 'android' }) {
   const isIOS = platform === 'ios'
   return (
-    <div className="relative w-full aspect-[9/19]">
+    <div className="relative w-full max-w-[320px] aspect-[9/19] h-[560px]">
       {/* Chasis metálico */}
       <div className={
         isIOS

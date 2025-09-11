@@ -72,17 +72,15 @@ export default function App() {
 
   return (
     <div>
-      <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-background/70 bg-background/90 border-b border-border">
-        <div className="max-w-8xl mx-auto flex items-center justify-between px-6 md:px-10 h-14">
-          <span className="font-semibold text-foreground">Bartolomé</span>
-          <nav className="hidden md:flex gap-6 text-sm text-foreground/70">
-            <button onClick={scrollToMaquetador} className="hover:text-foreground">Cotizar al instante</button>
-            <a href="#portafolio" className="hover:text-foreground">Portafolio</a>
-          </nav>
-        </div>
-      </header>
       <section className="px-6 md:px-10 py-12 bg-background">
         <div className="max-w-6xl mx-auto space-y-6">
+          <div className="flex items-center justify-between">
+            <span className="header-title">WeApps</span>
+            <nav className="hidden md:flex gap-6 text-sm text-foreground/70">
+              <button onClick={scrollToMaquetador} className="hover:text-foreground">Cotizar al instante</button>
+              <a href="#portafolio" className="hover:text-foreground">Portafolio</a>
+            </nav>
+          </div>
           <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-#8E1616-500 to-red-500 animate-gradient-x">Simulador de cotización para innovación</h1>
           
           <div className="relative my-12">
@@ -146,6 +144,16 @@ export default function App() {
         </div>
       </section>
 
+      <section id="portafolio" className="px-6 md:px-10 py-12 bg-muted">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-semibold">Portafolio</h2>
+            <Button variant="outline" onClick={scrollToMaquetador}>Obtener cotización</Button>
+          </div>
+          <PortfolioSlider items={portfolio} />
+        </div>
+      </section>
+
       <section ref={maquetadorRef} id="simulador" className="px-6 md:px-10 py-12 bg-background border-t border-border">
         <div className="max-w-3xl mx-auto">
           <Card>
@@ -157,16 +165,6 @@ export default function App() {
               {error && <p className="text-sm text-red-600 mt-3">{error}</p>}
             </CardContent>
           </Card>
-        </div>
-      </section>
-
-      <section id="portafolio" className="px-6 md:px-10 py-12 bg-muted">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-semibold">Portafolio</h2>
-            <Button variant="outline" onClick={scrollToMaquetador}>Obtener cotización</Button>
-          </div>
-          <PortfolioSlider items={portfolio} />
         </div>
       </section>
 

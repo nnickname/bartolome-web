@@ -1,8 +1,11 @@
 import { useMemo, useState } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
 import { Button } from './ui/button'
 import { Textarea } from './ui/textarea'
 import { Input } from './ui/input'
 import { Select } from './ui/select'
+import { PhoneFrame } from './AiAppPreview'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
   onSubmit: (prompt: string, email?: string) => Promise<void>
@@ -10,6 +13,7 @@ type Props = {
 }
 
 export function Maquetador({ onSubmit, loading }: Props) {
+  const navigate = useNavigate()
   const [prompt, setPrompt] = useState('')
   const [objetivo, setObjetivo] = useState('')
   const [publico, setPublico] = useState('')
@@ -22,6 +26,10 @@ export function Maquetador({ onSubmit, loading }: Props) {
   const [fuentes, setFuentes] = useState('')
   const [capacidadesIA, setCapacidadesIA] = useState('')
   const [integraciones, setIntegraciones] = useState('')
+
+  const [previewHtml, setPreviewHtml] = useState<string | null>(null)
+  const [isGenerating, setIsGenerating] = useState(false)
+  const [showPreview, setShowPreview] = useState(false)
 
   const [step, setStep] = useState(0)
   const totalSteps = 3
@@ -61,8 +69,66 @@ export function Maquetador({ onSubmit, loading }: Props) {
   }
 
   const onFinalSubmit = () => {
-    if (loading) return
-    onSubmit(composedPrompt, email.trim() || undefined)
+    if (loading || isGenerating) return
+    setIsGenerating(true)
+    setShowPreview(false)
+    // Mock de 2s: generamos el HTML luego del "loading"
+    setTimeout(() => {
+      const element = (
+        <PhoneFrame platform="ios">
+          <div className="p-4">
+            <div className="text-lg font-semibold truncate" title={objetivo || 'Tu app IA'}>{objetivo || 'Tu app IA'}</div>
+            <div className="text-xs text-foreground/70 mt-1">Para: {publico || 'Usuarios'}</div>
+
+            <div className="mt-5 space-y-3 text-sm">
+              <div>
+                <div className="text-xs text-foreground/70">Necesidad</div>
+                <div className="mt-1 rounded-md border border-border bg-card px-3 py-2 text-foreground/90">{prompt || '—'}</div>
+              </div>
+              <div>
+                <div className="text-xs text-foreground/70">Dolor / Proceso a mejorar</div>
+                <div className="mt-1 rounded-md border border-border bg-card px-3 py-2 text-foreground/90">{dolor || '—'}</div>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <div className="text-xs text-foreground/70">KPI objetivo</div>
+                  <div className="mt-1 rounded-md border border-border bg-card px-3 py-2 text-foreground/90">{kpi || '—'}</div>
+                </div>
+                <div>
+                  <div className="text-xs text-foreground/70">Plataformas</div>
+                  <div className="mt-1 rounded-md border border-border bg-card px-3 py-2 text-foreground/90">{plataformas}</div>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <div className="text-xs text-foreground/70">Presupuesto</div>
+                  <div className="mt-1 rounded-md border border-border bg-card px-3 py-2 text-foreground/90">{presupuesto}</div>
+                </div>
+                <div>
+                  <div className="text-xs text-foreground/70">Deadline</div>
+                  <div className="mt-1 rounded-md border border-border bg-card px-3 py-2 text-foreground/90">{deadline}</div>
+                </div>
+              </div>
+              <div>
+                <div className="text-xs text-foreground/70">Capacidades IA</div>
+                <div className="mt-1 rounded-md border border-border bg-card px-3 py-2 text-foreground/90">{capacidadesIA || '—'}</div>
+              </div>
+              <div>
+                <div className="text-xs text-foreground/70">Integraciones</div>
+                <div className="mt-1 rounded-md border border-border bg-card px-3 py-2 text-foreground/90">{integraciones || '—'}</div>
+              </div>
+            </div>
+
+            <button className="mt-5 w-full rounded-full bg-foreground text-background text-sm py-3 cursor-pointer transition hover:opacity-90 active:opacity-80">Acción principal</button>
+          </div>
+        </PhoneFrame>
+      )
+      const html = renderToStaticMarkup(element)
+      setPreviewHtml(html)
+      setIsGenerating(false)
+      setShowPreview(true)
+      navigate('/preview', { state: { html, composedPrompt, objetivo, publico, kpi, plataformas, presupuesto, deadline, fuentes, capacidadesIA, integraciones } })
+    }, 2000)
   }
 
   const progressPct = useMemo(() => ((step + 1) / totalSteps) * 100, [step])
@@ -147,7 +213,7 @@ export function Maquetador({ onSubmit, loading }: Props) {
         </div>
       )}
 
-      {step === 2 && (
+      {step === 2 && !showPreview && (
         <div className="space-y-4">
           <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -212,12 +278,45 @@ export function Maquetador({ onSubmit, loading }: Props) {
         </div>
       )}
 
+      {step === 2 && showPreview && (
+        <div className="flex justify-center">
+          <div className="max-w-xs">
+            <PhoneFrame platform="ios">
+              <div className="p-4">
+                <div className="text-lg font-semibold truncate" title={objetivo || 'Tu app IA'}>{objetivo || 'Tu app IA'}</div>
+                <div className="text-xs text-foreground/70 mt-1">Para: {publico || 'Usuarios'}</div>
+                <div className="mt-4 space-y-2 text-sm">
+                  <div className="rounded-xl border border-border bg-card p-3">
+                    <div className="text-xs text-foreground/70">Resumen</div>
+                    <div className="mt-1 text-foreground/90 whitespace-pre-wrap">{composedPrompt}</div>
+                  </div>
+                  <button className="w-full rounded-full bg-foreground text-background text-sm py-3 cursor-pointer transition hover:opacity-90 active:opacity-80">Comenzar</button>
+                </div>
+              </div>
+            </PhoneFrame>
+          </div>
+        </div>
+      )}
+
       <div className="flex items-center justify-between pt-2">
         <Button variant="outline" onClick={onBack} disabled={step === 0 || !!loading}>Volver</Button>
         {step < totalSteps - 1 ? (
           <Button onClick={onNext} disabled={!canGoNext || !!loading}>Siguiente</Button>
         ) : (
-          <Button onClick={onFinalSubmit} disabled={!composedPrompt || !!loading}>{loading ? 'Generando...' : 'Simular propuesta'}</Button>
+          !showPreview ? (
+            <Button onClick={onFinalSubmit} disabled={!composedPrompt || !!loading || isGenerating}>
+              {isGenerating ? (
+                <span className="inline-flex items-center">
+                  <span className="mr-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                  Generando...
+                </span>
+              ) : (
+                'Simular propuesta'
+              )}
+            </Button>
+          ) : (
+            <Button variant="outline" onClick={() => setShowPreview(false)}>Editar</Button>
+          )
         )}
       </div>
     </div>

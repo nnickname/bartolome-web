@@ -10,7 +10,7 @@ module.exports = {
         card: "#FFFFFF", // tarjetas blancas
         muted: "#F8EDED", // lavanda muy suave para secciones
         primary: {
-          DEFAULT: "#8E1616", // violeta moderado (acento)
+          DEFAULT: "#8E1616", // Rojo moderado (acento)
           foreground: "#FFFFFF"
         },
         border: "#FFDEDE" // borde suave
