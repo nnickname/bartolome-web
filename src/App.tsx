@@ -78,14 +78,15 @@ export default function App() {
   return (
     <div>
       <section className="px-6 md:px-10 py-12 bg-background">
-        <div className="max-w-6xl mx-auto space-y-6">
-          <div className="flex items-center justify-between">
-            <span className="header-title">WeApps</span>
+        <div className="max-w-8xl mx-auto mb-12 flex items-center justify-between">
+            <span className="header-title">WEAPPS</span>
             <nav className="hidden md:flex gap-6 text-sm text-foreground/70">
               <button onClick={scrollToMaquetador} className="hover:text-foreground">Formulario</button>
               <Button variant="ghost" href={calendlyUrl} target="_blank" rel="noreferrer">Agendar</Button>
             </nav>
-          </div>
+        </div>
+        <div className="max-w-6xl mx-auto space-y-6">
+          
 
           <SectionHeading
             title="Software con IA para PYMES — resultados en semanas"
