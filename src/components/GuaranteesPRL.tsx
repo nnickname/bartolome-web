@@ -6,46 +6,46 @@ export default function GuaranteesPRL() {
   return (
     <section className="px-6 md:px-10 py-12 bg-background border-t border-border">
       <div className="max-w-6xl mx-auto space-y-6">
-        <SectionHeading title="Garantías y PRL" />
+        <SectionHeading title="Garantías de software" />
         <div className="grid md:grid-cols-3 gap-6">
           <Card>
             <CardHeader>
-              <CardTitle>Trazabilidad por partida</CardTitle>
+              <CardTitle>Trazabilidad de requisitos y cambios</CardTitle>
             </CardHeader>
             <CardContent className="text-sm text-foreground/70 space-y-2">
-              <p>Precios con fuente y rendimiento usado. Cada partida muestra unidad, cantidad y coste unitario.</p>
+              <p>Historias de usuario, alcance y cambios versionados. Cada entrega referencia tickets, PRs y métricas.</p>
               <ul className="list-disc pl-5">
-                <li>Catálogo referenciado</li>
-                <li>Rendimientos documentados</li>
-                <li>Historial de versiones</li>
+                <li>Backlog y roadmap visibles</li>
+                <li>Versionado semántico y changelog</li>
+                <li>Demo y staging disponibles</li>
               </ul>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>PRL y cumplimiento</CardTitle>
+              <CardTitle>Seguridad y cumplimiento</CardTitle>
             </CardHeader>
             <CardContent className="text-sm text-foreground/70 space-y-2">
-              <p>Buenas prácticas de seguridad y salud integradas en el flujo de obra.</p>
+              <p>Prácticas de seguridad integradas en el ciclo de vida del software.</p>
               <ul className="list-disc pl-5">
-                <li>Checklist PRL por etapa</li>
-                <li>Registros y evidencias</li>
-                <li>Alertas preventivas</li>
+                <li>Revisión de código y escaneo de dependencias</li>
+                <li>Gestión de secretos y control de accesos (RBAC)</li>
+                <li>Registro de auditoría y GDPR básico</li>
               </ul>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>Certificaciones</CardTitle>
+              <CardTitle>Calidad y soporte</CardTitle>
             </CardHeader>
             <CardContent className="text-sm text-foreground/70 space-y-2">
-              <p>Procesos orientados a estándares de calidad.</p>
+              <p>Entregas confiables y continuidad operativa después del lanzamiento.</p>
               <ul className="list-disc pl-5">
-                <li>ISO 9001 (orientación)</li>
-                <li>Gestión documental</li>
-                <li>Auditoría de cambios</li>
+                <li>Pruebas automáticas y QA exploratorio</li>
+                <li>Monitoreo y alertas en producción</li>
+                <li>Soporte post-lanzamiento y acuerdos de nivel de servicio</li>
               </ul>
             </CardContent>
           </Card>
