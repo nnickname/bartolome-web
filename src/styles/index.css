@@ -38,7 +38,7 @@ body {
   .portfolio-slide { min-width: calc(50vw - 3rem); }
 }
 @media (min-width: 1024px) { /* lg: 3 cards visibles aprox */
-  .portfolio-slide { min-width: calc((100vw - 6rem - 6rem) / 3); max-width: 360px; }
+  .portfolio-slide { min-width: calc((100vw - 6rem - 6rem) / 3); max-width: 420px; }
 }
 
 /* Gradiente animado para títulos llamativos */

@@ -98,7 +98,7 @@ export function PortfolioSlider({ items }: Props) {
         <div className="portfolio-track">
           {(hasItems ? items : []).map((p) => (
             <div key={p.id} data-card className="portfolio-slide">
-              <PortfolioCard name={p.name} description={p.description} image_url={p.image_url} business_outcome={p.business_outcome} />
+              <PortfolioCard kind={p.kind} name={p.name} description={p.description} images={p.images} business_outcome={p.business_outcome} />
             </div>
           ))}
         </div>

@@ -33,10 +33,12 @@ export default function App() {
       //const { data, error } = await supabase.from('portfolio').select('*').order('name', { ascending: true })
       if (true) {
         setPortfolio([
-          { id: '1', name: 'MedPlus', description: 'Health-tech app, redujo tiempos de gestión 30%', image_url: 'https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png', business_outcome: '30% menos tiempo' },
-          { id: '2', name: 'Betless', description: 'Plataforma de apuestas, aumentó conversiones', image_url: 'https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png', business_outcome: '↑ conversiones' },
-          { id: '3', name: 'StoreFlow', description: 'Ecommerce B2B con catálogos personalizados y checkout en 1 clic', image_url: 'https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png', business_outcome: '↑ ticket medio 18%' },
-          { id: '4', name: 'EduTrack', description: 'Plataforma edtech con analíticas de aprendizaje y gamificación', image_url: 'https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png', business_outcome: '↑ retención 22%' }
+          { id: '1', name: 'Betless - Deja de jugar y apostar', description: 'Deja atrás la adicción al juego para siempre con Betless, la app de recuperación anónima número 1 en la que confían miles de personas. Libérate de las apuestas deportivas, los juegos de casino y todos los hábitos de juego con herramientas probadas y el apoyo de la comunidad.', kind: 'appps',
+            images: ['https://media.discordapp.net/attachments/828663612754231312/1415891884605313176/IMG_1812.png?ex=68c4db93&is=68c38a13&hm=c4fe1e709be3b5535985116e15b02175c733c151234adab3a03f699164406fc7&=&format=webp&quality=lossless&width=320&height=693',
+              'https://media.discordapp.net/attachments/828663612754231312/1415891884949241966/IMG_1811.png?ex=68c4db93&is=68c38a13&hm=471ada336a972659244da1ec2de695a503c51d5856338aa4237fe18c45fa6f32&=&format=webp&quality=lossless&width=320&height=693'], business_outcome: '30% menos tiempo' },
+          { id: '2', name: 'Betless', description: 'Plataforma de apuestas, aumentó conversiones', images: ['https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png', 'https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png'], business_outcome: '↑ conversiones' },
+          { id: '3', name: 'StoreFlow', description: 'Ecommerce B2B con catálogos personalizados y checkout en 1 clic', images: ['https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png', 'https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png'], business_outcome: '↑ ticket medio 18%' },
+          { id: '4', name: 'EduTrack', description: 'Plataforma edtech con analíticas de aprendizaje y gamificación', images: ['https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png', 'https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png'], business_outcome: '↑ retención 22%' }
 
         ])
       } else {
@@ -174,7 +176,7 @@ export default function App() {
       <KPIsLogos />
 
       <section id="portafolio" className="px-6 md:px-10 py-12 bg-muted">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-8xl mx-auto">
           <div className="flex items-center justify-between mb-6">
             <div>
               <SectionHeading title="Portafolio" subtitle="Casos por tipología" underline={false} />
