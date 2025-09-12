@@ -12,7 +12,7 @@ module.exports = {
         muted: "#F5F7FB",
         border: "#E6EAF5",
         primary: {
-          DEFAULT: "#AEEA94", // verde neón oceano
+          DEFAULT: "#EE4266", // verde neón oceano
           foreground: "#001B16",
           variant: "#00BFA5",
         },

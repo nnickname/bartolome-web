@@ -96,9 +96,9 @@ export function PortfolioSlider({ items }: Props) {
         style={{ scrollSnapType: 'x mandatory' }}
       >
         <div className="portfolio-track">
-          {(hasItems ? items : []).map((p) => (
+          {(hasItems ? items : []).map((p, index) => (
             <div key={p.id} data-card className="portfolio-slide">
-              <PortfolioCard kind={p.kind} name={p.name} description={p.description} images={p.images} business_outcome={p.business_outcome} />
+              <PortfolioCard number={(index+1).toString()} kind={p.kind} name={p.name} description={p.description} images={p.images} business_outcome={p.business_outcome} />
             </div>
           ))}
         </div>
