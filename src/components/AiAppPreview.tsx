@@ -50,7 +50,9 @@ export function AiAppPreview() {
 export function PhoneFrame({ children, gradient, platform = 'ios' }: { children: React.ReactNode; gradient?: string; platform?: 'ios' | 'android' }) {
   const isIOS = platform === 'ios'
   return (
-    <div className="relative w-full max-w-[320px] aspect-[9/19] h-[560px]">
+    <div style={{
+      zIndex: 2
+    }} className="relative w-full max-w-[320px] aspect-[9/19] h-[560px]">
       {/* Chasis metálico */}
       <div className={
         isIOS
@@ -77,7 +79,9 @@ export function PhoneFrame({ children, gradient, platform = 'ios' }: { children:
         } />
         {/* Barra superior: notch (iOS) o cámara (Android) */}
         {isIOS ? (
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 h-7 w-40 rounded-b-[18px] bg-zinc-900/95" />
+          <div style={{
+            zIndex: 1
+          }} className="absolute top-0 left-1/2 -translate-x-1/2 h-7 w-40 rounded-b-[18px] bg-zinc-900/95" />
         ) : (
           <>
             <div className="absolute top-2 left-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-zinc-800 border border-zinc-700 shadow-[0_0_4px_rgba(0,0,0,0.5)]" />

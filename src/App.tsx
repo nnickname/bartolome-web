@@ -16,6 +16,8 @@ import KPIsLogos from './components/KPIsLogos'
 import GuaranteesPRL from './components/GuaranteesPRL'
 import SectionHeading from './components/SectionHeading'
 
+import honek1 from './assets/portfolio/honek1.png'
+import honek2 from './assets/portfolio/honek2.png'
 
 export default function App() {
   const [portfolio, setPortfolio] = useState<PortfolioItem[]>([])
@@ -36,12 +38,12 @@ export default function App() {
           { id: '1', name: 'Betless   - Deja de jugar y apostar', description: 'Deja atrás la adicción al juego para siempre con Betless, la app de recuperación anónima número 1 en la que confían miles de personas. Libérate de las apuestas deportivas, los juegos de casino y todos los hábitos de juego con herramientas probadas y el apoyo de la comunidad.', kind: 'appps',
             images: ['https://media.discordapp.net/attachments/828663612754231312/1415891884605313176/IMG_1812.png?ex=68c4db93&is=68c38a13&hm=c4fe1e709be3b5535985116e15b02175c733c151234adab3a03f699164406fc7&=&format=webp',
               'https://media.discordapp.net/attachments/828663612754231312/1415891884949241966/IMG_1811.png?ex=68c4db93&is=68c38a13&hm=471ada336a972659244da1ec2de695a503c51d5856338aa4237fe18c45fa6f32&=&format=webp'], business_outcome: '30% menos tiempo' },
-              { id: '2', name: 'Meduplus', description: 'Directorio de servicios y beneficios de salud. Búsqueda por especialidad y ciudad, filtros rápidos y fichas de clínicas con datos de contacto, mapa y acciones de un toque como llamar, email o ver detalle. Navegación inferior para explorar y guardar favoritos.', kind: 'appps', images: ['https://media.discordapp.net/attachments/828663612754231312/1416065215535124531/IMG_1817.jpg?ex=68c57d00&is=68c42b80&hm=ed6b6e1f9929ae44da15dcb64d7e939fe4b98d6d16c40e0f439d83406869134f&=&format=webp',
+          { id: '2', name: 'Honek', description: 'App de gestión hotelera vendida en Italia: reservas, housekeeping y panel de operaciones.', kind: 'appps',
+            images: [honek1, honek2], business_outcome: '↑ eficiencia operativa 20%' },
+          { id: '3', name: 'Meduplus', description: 'Directorio de servicios y beneficios de salud. Búsqueda por especialidad y ciudad, filtros rápidos y fichas de clínicas con datos de contacto, mapa y acciones de un toque como llamar, email o ver detalle. Navegación inferior para explorar y guardar favoritos.', kind: 'appps', images: ['https://media.discordapp.net/attachments/828663612754231312/1416065215535124531/IMG_1817.jpg?ex=68c57d00&is=68c42b80&hm=ed6b6e1f9929ae44da15dcb64d7e939fe4b98d6d16c40e0f439d83406869134f&=&format=webp',
                 'https://media.discordapp.net/attachments/828663612754231312/1416065216529170562/IMG_1816.jpg?ex=68c57d00&is=68c42b80&hm=07b24548aa1667a2d9c2a8ed6c9ba620313b06aeebb2ae6e1d3df1266ba93a7f&=&format=webp'], business_outcome: '↑ Retención de pacientes 20%' },
-              { id: '3', name: 'StoreFlow', description: 'Ecommerce B2B con catálogos personalizados y checkout en 1 clic', images: ['https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png', 'https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png'], business_outcome: '↑ ticket medio 18%' },
-          { id: '4', name: 'EduTrack', description: 'Plataforma edtech con analíticas de aprendizaje y gamificación', images: ['https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png', 'https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png'], business_outcome: '↑ retención 22%' },
-          
-
+          { id: '4', name: 'Invayt', description: 'Plataforma web en producción.', kind: 'web', url: 'https://invayt.com',
+            images: ['https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png', 'https://nisdibzrgitfupvyhfes.supabase.co/storage/v1/object/public/event-images/1755124672134-web.png'], business_outcome: '↑ leads 25%' },
         ])
       } else {
         setPortfolio([] as PortfolioItem[])

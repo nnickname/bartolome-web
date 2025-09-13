@@ -31,12 +31,12 @@ export default function DeviceShowcase({ images, className, variant = 'section',
         <div className="relative h-[620px] md:h-[560px]">
           <div className="absolute right-0 top-0">
             <PhoneFrame platform="ios">
-              <ScreenshotFill src={first} fit="contain" />
+              <ScreenshotFill compensateTop src={first} fit="contain" />
             </PhoneFrame>
           </div>
           <div className="absolute -left-40 bottom-10 hidden md:block">
             <PhoneFrame platform="ios">
-              <ScreenshotFill src={second} fit="contain" />
+              <ScreenshotFill compensateTop src={second} fit="contain" />
             </PhoneFrame>
           </div>
         </div>
@@ -48,7 +48,9 @@ export default function DeviceShowcase({ images, className, variant = 'section',
 function ScreenshotFill({ src, compensateTop, compensateTopSmall, fit = 'contain', position = 'center top' }: { src: string; compensateTop?: boolean; compensateTopSmall?: boolean; fit?: 'cover' | 'contain'; position?: string }) {
   const shouldCompensateTop = (compensateTop || compensateTopSmall) && fit === 'cover'
   return (
-    <div className={`absolute inset-0 ${shouldCompensateTop ? (compensateTop ? '-mt-8' : '') : ''} ${shouldCompensateTop && compensateTopSmall ? '-mt-6' : ''}`}>
+    <div style={{
+      zIndex: 0
+    }} className={`absolute  inset-0 ${shouldCompensateTop ? (compensateTop ? '-mt-8' : '') : ''} ${shouldCompensateTop && compensateTopSmall ? '-mt-6' : ''}`}>
       <img
         src={src}
         alt="App screenshot"

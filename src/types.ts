@@ -39,5 +39,6 @@ export interface PortfolioItem {
   images?: string[]
   business_outcome?: string
   kind?: 'web' | 'appps' | 'other'
+  url?: string
 }
 

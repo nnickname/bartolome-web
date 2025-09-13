@@ -8,17 +8,25 @@ type Props = {
   images?: string[],
   kind?: 'web' | 'appps' | 'other'
   business_outcome?: string,
-  number?: string
+  number?: string,
+  url?: string
 }
 
-export function PortfolioCard({ name, description, images, business_outcome, kind, number}: Props) {
+export function PortfolioCard({ name, description, images, business_outcome, kind, number, url}: Props) {
     const showStores = kind === 'appps'
+    const isWeb = kind === 'web' && url
 
   return (
     <Card className="overflow-hidden">
       <DeviceShowcase name={name.substring(0, 10) + '...'} number={number} images={images ?? []} variant="card" />
       <CardHeader>
-        <CardTitle>{name}</CardTitle>
+        <CardTitle>
+          {isWeb ? (
+            <a href={url} target="_blank" rel="noreferrer" className="hover:underline">{name}</a>
+          ) : (
+            name
+          )}
+        </CardTitle>
       </CardHeader>
       <CardContent className="space-y-2">
         <p className="text-sm text-gray-300">{description}</p>
